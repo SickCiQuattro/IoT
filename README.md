@@ -2,6 +2,8 @@
 
 **IMPORTANTE:** Si assume che abbiate già effettuato il collegamento SSH tra Raspberry e MobaXterm.
 
+*“Se la vostra raspberry è stata toccata da Filippo di recente allora è sicuramente tutto aggiornato e non dovete fare nulla perché lui è malato e deve avere tutto all’ultima versione” - Filippo*
+
 ## Set up della raspberry
 La Raspberry dovrebbe essere già munita di python al suo interno. 
 Per verificarlo:
