@@ -47,6 +47,12 @@ pip install paho-mqtt
 
 Inoltre potrebbe essere comodo avere sotto mano il [getting-started](https://github.com/eclipse/paho.mqtt.python?tab=readme-ov-file#getting-started) di paho-mqtt.
 
+## File in questa repository
 
+- [Certificato](https://github.com/scrapanzano/IoT/blob/master/intermediate_ca.pem) per stabilire la sessione SSH con il laboratorio
+  
+**NOTA:** il certificato deve essere all'interno della stessa cartella dello scprit python nella Raspberry
+- [Esempio](https://github.com/scrapanzano/IoT/blob/master/supertoy.py) esempio di risoluzione di un tema esame
+- [Template](https://github.com/scrapanzano/IoT/blob/master/template.py) da poter riempire
 
 
