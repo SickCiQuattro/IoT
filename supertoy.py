@@ -95,5 +95,6 @@ except KeyboardInterrupt:
     # Libera tutti i pin della raspberry
     GPIO.cleanup()
 
-mqttc.loop_stop()
+    # Interruzione del loop
+    mqttc.loop_stop()
 
