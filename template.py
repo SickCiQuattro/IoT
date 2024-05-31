@@ -10,7 +10,7 @@ MQTT_PUB_TOPIC = "path/del/topic"
 MQTT_SUB_TOPIC = "path/del/topic"
 
 # Modalità GPIO
-GPIO.setmode(GPIO.board)
+GPIO.setmode(GPIO.BOARD)
 
 # Creazione della coda multiprocesso per la gestione dei messaggi
 queue = Queue()
