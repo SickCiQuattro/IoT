@@ -3,7 +3,7 @@
 *“Se la vostra raspberry è stata toccata da Filippo di recente allora è sicuramente tutto aggiornato e non dovete fare nulla perché lui è malato e deve avere tutto all’ultima versione” - Filippo*
 
 # DISCLAMIER
- In questo brach viene trattata la libreria GPIO Zero per avere una visione completa di tutto il necessario. Solo fattoria.py è stato modificato per l'uso di GPIO Zero perchè sono pigro e devo finire sistemi di elaborazione.
+ In questo brach viene trattata la libreria GPIO Zero perchè molto più semplice e compatibile con la raspberry e per avere una visione completa di tutto il necessario. Solo fattoria.py è stato modificato per l'uso di GPIO Zero perchè integra una coda non bloccante e una serie di funzioni di utilità per rendere la programmazione molto più veloce.
 
 
 ## Table of contents
@@ -16,8 +16,10 @@
 - [File in questa repository](#file-in-questa-repository)
 - [Collegamenti esterni](#collegamenti-esterni)
 
-## Installazione python automatica
+## Installazione python AUTOMATICA
 Installazione python e librerie automatica (evitare se ti chiami umberto)
+
+Trascinare backup.sh all'interno della raspberry e spostarsi con cd nella cartella con questo file.
 
 rendere lo script **backup.sh** eseguibile:
 ```bash
@@ -28,6 +30,7 @@ eseguirlo:
 ```bash
 ./backup.sh
 ```
+Automaticamente verrà predisposta la raspberry all'uso funzionale e corretto per l'esame.
 
 ## Collegamento SSH con MobaXterm
 1. Creare una nuova sessione SSH
