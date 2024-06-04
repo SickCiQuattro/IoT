@@ -167,3 +167,5 @@ eseguirlo:
 ```bash
 ./install.sh
 ```
+
+*Nota: Questa repository è fornito così com'è, senza garanzie di alcun tipo.L'utente è l'unico responsabile dell'uso di questo e dell'eventuale danneggiamento del sistema o dei dati che potrebbe causare. L'autore non si assume alcuna responsabilità per qualsiasi problema derivante dall'uso di questo. Si prega di utilizzare con cautela e sotto la propria responsabilità.*
