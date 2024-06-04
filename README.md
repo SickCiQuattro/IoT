@@ -2,6 +2,8 @@
 
 **IMPORTANTE:** Si assume che abbiate già effettuato il collegamento SSH tra Raspberry e MobaXterm.
 
+*“Se la vostra raspberry è stata toccata da Filippo di recente allora è sicuramente tutto aggiornato e non dovete fare nulla perché lui è malato e deve avere tutto all’ultima versione” - Filippo*
+
 ## Set up della raspberry
 La Raspberry dovrebbe essere già munita di python al suo interno. 
 Per verificarlo:
@@ -51,8 +53,8 @@ Inoltre potrebbe essere comodo avere sotto mano il [getting-started](https://git
 
 - [Certificato](https://github.com/scrapanzano/IoT/blob/master/intermediate_ca.pem) per stabilire la sessione SSH con il laboratorio
   
-**NOTA:** il certificato deve essere all'interno della stessa cartella dello scprit python nella Raspberry
-- [Esempio](https://github.com/scrapanzano/IoT/blob/master/supertoy.py) esempio di risoluzione di un tema esame
+**NOTA:** il certificato deve essere all'interno della stessa cartella dello script python nella Raspberry
+- [Esempio](https://github.com/scrapanzano/IoT/blob/master/supertoy.py) di risoluzione di un tema esame
 - [Template](https://github.com/scrapanzano/IoT/blob/master/template.py) da poter riempire
 
 
