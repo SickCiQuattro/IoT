@@ -1,8 +1,11 @@
 # Guida generale per l'esame di laboratorio di IoT 2024 del corso di ITID
 
-**IMPORTANTE:** Si assume che abbiate già effettuato il collegamento SSH tra Raspberry e MobaXterm.
-
 *“Se la vostra raspberry è stata toccata da Filippo di recente allora è sicuramente tutto aggiornato e non dovete fare nulla perché lui è malato e deve avere tutto all’ultima versione” - Filippo*
+
+## Effettuare collegamento SSH con broker ELUX
+
+![ProprietàGenerali](https://github.com/scrapanzano/IoT/blob/master/PropietaGenerali.png)
+![ProprietàTLS](https://github.com/scrapanzano/IoT/blob/master/PropietaTLS.png)
 
 ## Set up della raspberry
 La Raspberry dovrebbe essere già munita di python al suo interno. 
