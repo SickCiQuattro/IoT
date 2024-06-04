@@ -19,7 +19,7 @@ Server: lab-elux.unibs.it: 50009
 Security Config:
 ```bash
 UID: itidiot
-PSWD: Itid24!
+PSWD: ITid24!
 ```
 
 ## Set up della raspberry
