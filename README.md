@@ -80,6 +80,8 @@ python3 -V
 In caso contrario è possibile installarlo, come mostrato [qui](https://projects.raspberrypi.org/en/projects/generic-python-install-python3), eseguendo i seguenti comandi:
 ```bash
 sudo update
+```
+```bash
 sudo apt install python3 idle3
 ```
 La Raspberry potrebbe non avere installato pip.
@@ -90,7 +92,11 @@ pip --version
 In caso contrario è possibile installarlo, come mostrato [qui](https://pimylifeup.com/raspberry-pi-pip/), eseguendo i seguenti comandi:
 ```bash
 sudo update
+```
+```bash
 sudo upgrade
+```
+```bash
 sudo apt install python3-pip
 ```
 **ATTENZIONE:** sudo update e sudo upgrade potrebbero richiedere un po' di tempo per terminare le loro procedure.
