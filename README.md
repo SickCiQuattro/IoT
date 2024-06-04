@@ -3,7 +3,7 @@
 *“Se la vostra raspberry è stata toccata da Filippo di recente allora è sicuramente tutto aggiornato e non dovete fare nulla perché lui è malato e deve avere tutto all’ultima versione” - Filippo*
 
 # DISCLAMIER
- In questo brach viene trattata la libreria GPIO Zero per avere una visione completa di tutto il necessario. fattoria.py è stato modificato per l'uso di GPIO Zero perchè sono pigro e devo finire sistemi di elaborazione.
+ In questo brach viene trattata la libreria GPIO Zero per avere una visione completa di tutto il necessario. Solo fattoria.py è stato modificato per l'uso di GPIO Zero perchè sono pigro e devo finire sistemi di elaborazione.
 
 
 ## Effettuare collegamento SSH con broker ELUX  (Se non comunicate all'esame)
