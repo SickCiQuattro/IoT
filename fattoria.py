@@ -1,17 +1,28 @@
-import paho.mqtt.client as mqtt
 import time
-import RPi.GPIO as GPIO
 import json
 import random
 from multiprocessing import Queue
+
+import paho.mqtt.client as mqtt
+from gpiozero import LightSensor as LED
+from gpiozero import Button
 
 # Topic sul quale la raspberry pubblica
 MQTT_PUB_TOPIC = "iot24/"
 # Topic sul quale la raspberry si sottoscrive
 MQTT_SUB_TOPIC = "iot24/ele25"
 
-# Modalità GPIO
-GPIO.setmode(GPIO.BOARD)
+# Immagini iniziali degli ingressi
+# GPIO Pins
+LED1 = LED(12) # on(), off(), blink()
+LED2 = LED(16)
+LED3 = LED(18)
+# dicono che il LED4 (rosso) sia connesso al pin 22 tramite transistor T4, ma boh
+P1 = Button(13) #button.wait_for_press()
+P2 = Button(15)
+SW1 = Button(11)
+
+led_list = (LED1, LED2, LED3)
 
 # Creazione della coda multiprocesso per la gestione dei messaggi
 queue = Queue()
@@ -46,39 +57,37 @@ mqttc.tls_set(ca_certs = 'intermediate_ca.pem')
 mqttc.username_pw_set(username = 'itidiot', password = 'ITid24!')
 mqttc.connect("lab-elux.unibs.it", 50009, 60)
 
-# Immagini iniziali degli ingressi
-##LED1
-GPIO.setup(12, GPIO.OUT, initial=GPIO.LOW) # Inizialmente spento
-##LED2
-GPIO.setup(16, GPIO.OUT, initial=GPIO.LOW) # Inizialmente spento
-##LED3
-GPIO.setup(18, GPIO.OUT, initial=GPIO.LOW) # Inizialmente spento
-##P1
-GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
-
-led_list = (12, 16, 18)
-
 # Se raspberry deve pubblicare un messaggio iniziale
 MQTT_PUB_MESSAGE = json.dumps({"led1": 0, "led2": 0, "led3": 0, "p1": 0})
 
 # Pubblicazione del messaggio iniziale sul topic
 mqttc.publish(topic=MQTT_PUB_TOPIC, payload=MQTT_PUB_MESSAGE)
 
-# FACOLTATIVA: funzione per la logica di controllo 
+# Funzione creazione json
+def create_payload(rssi):
+    return {
+        "ID": "ele-25",
+        "Location": {
+            "Lat": 20,
+            "Lon": 30
+        },
+        "TS": time.ctime(),
+        "RSSI": rssi
+    }
+# Funzione per la logica di controllo 
 def control_logic(message_list):
     # mqttc.publish(topic=MQTT_PUB_TOPIC, payload=str(message))
     rssi_tot = 0
     for element in message_list:
         rssi_tot += element["RSSI"]
     if rssi_tot > 60:
-        GPIO.output(12, GPIO.HIGH)
+        LED1.on()
         time.sleep(5)
-        GPIO.output(12, GPIO.LOW)
+        LED1.off()
 
-message_list = []
+message_list = [] #lista per accumulare messaggi senza intasare la queue
 # Ciclo infinito
 mqttc.loop_start()
-
 time.sleep(5)
 
 try:
@@ -100,25 +109,14 @@ try:
 
         #segnale drone
         rssi = random.random() * 100
-
+        payload_json = create_payload(rssi)
         #pubblica il proprio messaggio
-        mqttc.publish(topic=MQTT_PUB_TOPIC, payload=str({
-    "ID": "ele-25",
-    "Location": {
-        "Lat": 20,
-        "Lon": 30
-    },
-    "TS": time.ctime(),
-    "RSSI": rssi
-}))
+        mqttc.publish(topic=MQTT_PUB_TOPIC, payload=str(payload_json))
         time.sleep(1)
 
 # Gestione dell'eccezione quando si preme CTRL+C
 except KeyboardInterrupt:
-    print("Exiting...")
-    
-    # Libera i pin della raspberry
-    GPIO.cleanup()
+    print(" Exiting...")
 
     # Ferma il loop del client
     mqttc.loop_stop()

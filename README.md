@@ -2,10 +2,25 @@
 
 *“Se la vostra raspberry è stata toccata da Filippo di recente allora è sicuramente tutto aggiornato e non dovete fare nulla perché lui è malato e deve avere tutto all’ultima versione” - Filippo*
 
-## Effettuare collegamento SSH con broker ELUX
+# DISCLAMIER
+ In questo brach viene trattata la libreria GPIO Zero per avere una visione completa di tutto il necessario. fattoria.py è stato modificato per l'uso di GPIO Zero perchè sono pigro e devo finire sistemi di elaborazione.
+
+
+## Effettuare collegamento SSH con broker ELUX  (Se non comunicate all'esame)
 
 ![ProprietàGenerali](https://github.com/scrapanzano/IoT/blob/master/PropietaGenerali.png)
 ![ProprietàTLS](https://github.com/scrapanzano/IoT/blob/master/PropietaTLS.png)
+
+Connessione:
+```bash
+iot24/<banco>/
+Server: lab-elux.unibs.it: 50009
+```
+Security Config:
+```bash
+UID: itidiot
+PSWD: Itid24!
+```
 
 ## Set up della raspberry
 La Raspberry dovrebbe essere già munita di python al suo interno. 
@@ -32,17 +47,19 @@ sudo apt install python3-pip
 **ATTENZIONE:** sudo update e sudo upgrade potrebbero richiedere un po' di tempo per terminare le loro procedure.
 
 
-Per poter svolgere l'esame sono necessarie due librerie: [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) e [paho-mqtt](https://pypi.org/project/paho-mqtt/), per verificare se sono già installate: 
+Per poter svolgere l'esame sono necessarie due librerie: [GPIO Zero](https://gpiozero.readthedocs.io/en/latest/index.html) e [paho-mqtt](https://pypi.org/project/paho-mqtt/), per verificare se sono già installate: 
 ```bash
 pip list
 ```
 Altrimenti:
 ```bash
-pip install RPi.GPIO
+pip install gpiozero
 ```
 ```bash
 pip install paho-mqtt
 ```
+
+Per abilitare modulo I2C [Solo per veri nerd](http://www.emcu.it/RaspBerryPi/RaspBerryPi.html#Abilitare%20I2C%20bus)
 
 ## Documentazione utile
 
@@ -56,8 +73,18 @@ Inoltre potrebbe essere comodo avere sotto mano il [getting-started](https://git
 
 - [Certificato](https://github.com/scrapanzano/IoT/blob/master/intermediate_ca.pem) per stabilire la sessione SSH con il laboratorio
   
-**NOTA:** il certificato deve essere all'interno della stessa cartella dello script python nella Raspberry
+**NOTA:** il certificato deve essere all'interno della stessa cartella dello script python nella Raspberry (es. /home/pi/scripts/)
 - [Esempio](https://github.com/scrapanzano/IoT/blob/master/supertoy.py) di risoluzione di un tema esame
 - [Template](https://github.com/scrapanzano/IoT/blob/master/template.py) da poter riempire
 
+## Installazione automatica python e librerie
 
+rendere lo script **install.sh** eseguibile:
+```bash
+chmod +x install.sh
+```
+
+eseguirlo:
+```bash
+./install.sh
+```

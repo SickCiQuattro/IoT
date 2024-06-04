@@ -1,13 +1,23 @@
-import paho.mqtt.client as mqtt
 import time
-import RPi.GPIO as GPIO
 import json
 from multiprocessing import Queue
+
+import paho.mqtt.client as mqtt
+import RPi.GPIO as GPIO
 
 # Topic sul quale la raspberry pubblica
 MQTT_PUB_TOPIC = "path/del/topic"
 # Topic sul quale la raspberry si sottoscrive
 MQTT_SUB_TOPIC = "path/del/topic"
+
+# GPIO Pins
+LED1 = 12
+LED2 = 16
+LED3 = 18
+P1 = 13
+P2 = 15
+
+led_list = (LED1, LED2, LED3)
 
 # Modalità GPIO
 GPIO.setmode(GPIO.BOARD)
@@ -52,15 +62,14 @@ mqttc.connect("lab-elux.unibs.it", 50009, 60)
 
 # Immagini iniziali degli ingressi
 ##LED1
-GPIO.setup(12, GPIO.OUT, initial=GPIO.LOW) # Inizialmente spento
+GPIO.setup(LED1, GPIO.OUT, initial=GPIO.LOW) # Inizialmente spento
 ##LED2
-GPIO.setup(16, GPIO.OUT, initial=GPIO.LOW) # Inizialmente spento
+GPIO.setup(LED2, GPIO.OUT, initial=GPIO.LOW) # Inizialmente spento
 ##LED3
-GPIO.setup(18, GPIO.OUT, initial=GPIO.LOW) # Inizialmente spento
+GPIO.setup(LED3, GPIO.OUT, initial=GPIO.LOW) # Inizialmente spento
 ##P1
-GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
-
-led_list = (12, 16, 18)
+GPIO.setup(P1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(P2, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
 
 # Se raspberry deve pubblicare un messaggio iniziale
 MQTT_PUB_MESSAGE = json.dumps({"led1": 0, "led2": 0, "led3": 0, "p1": 0})
@@ -69,7 +78,6 @@ MQTT_PUB_MESSAGE = json.dumps({"led1": 0, "led2": 0, "led3": 0, "p1": 0})
 mqttc.publish(topic=MQTT_PUB_TOPIC, payload=MQTT_PUB_MESSAGE)
 
 # Ciclo infinito
-
 mqttc.loop_start()
 
 time.sleep(5)
