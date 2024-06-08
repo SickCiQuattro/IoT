@@ -1,0 +1,180 @@
+[
+    {
+        "id": "9cc787027b6b627b",
+        "type": "tab",
+        "label": "fattoria",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "092013907d2666f8",
+        "type": "mqtt in",
+        "z": "9cc787027b6b627b",
+        "name": "Fattorie esterne",
+        "topic": "iot24/",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "104f1d8df2401067",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "4f6137e9bb7d98e0",
+                "b251c1f1138fb1bd"
+            ]
+        ]
+    },
+    {
+        "id": "b251c1f1138fb1bd",
+        "type": "mqtt out",
+        "z": "9cc787027b6b627b",
+        "name": "Fattoria",
+        "topic": "iot24/ele25",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "104f1d8df2401067",
+        "x": 600,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "58d87b97e26b500a",
+        "type": "inject",
+        "z": "9cc787027b6b627b",
+        "name": "MSG",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"ID\":\"ele-26\",\"Location\":{\"Lat\":20,\"Lon\":30},\"TS\":\"040524080606\",\"RSSI\":40}",
+        "payloadType": "json",
+        "x": 390,
+        "y": 300,
+        "wires": [
+            [
+                "b251c1f1138fb1bd",
+                "9649af9544c645ea"
+            ]
+        ]
+    },
+    {
+        "id": "9649af9544c645ea",
+        "type": "debug",
+        "z": "9cc787027b6b627b",
+        "name": "debug 24",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "872f79fbc47f6a8b",
+        "type": "inject",
+        "z": "9cc787027b6b627b",
+        "name": "MSG low",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"ID\":\"ele-22\",\"Location\":{\"Lat\":10,\"Lon\":50},\"TS\":\"040524080606\",\"RSSI\":5}",
+        "payloadType": "json",
+        "x": 380,
+        "y": 400,
+        "wires": [
+            [
+                "b251c1f1138fb1bd",
+                "9649af9544c645ea"
+            ]
+        ]
+    },
+    {
+        "id": "4f6137e9bb7d98e0",
+        "type": "debug",
+        "z": "9cc787027b6b627b",
+        "name": "debug 25",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 180,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "104f1d8df2401067",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "lab-elux.unibs.it",
+        "port": "50009",
+        "tls": "5a12c499b2b0ad85",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "5a12c499b2b0ad85",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "intermediate_ca.pem",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    }
+]
