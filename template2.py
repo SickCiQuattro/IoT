@@ -26,15 +26,14 @@ def time():
     mqttc.loop_stop()
     mqttc.disconnect()
     os.system(MQTT_UB_TOPIC)
-    os.system("sudo shutdown -h now")
     exit(0)
 mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 mqttc.on_connect = on_connect
-messag="topic"
 mqttc.on_message = on_message
 mqttc.tls_set(ca_certs='intermediate_ca.pem')
 mqttc.username_pw_set(username='itidiot', password='ITid24!')
 mqttc.connect("lab-elux.unibs.it", 50009, 60)
+messag="topic"
 GPIO.setup(LED1, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(LED2, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(LED3, GPIO.OUT, initial=GPIO.LOW)
@@ -48,14 +47,16 @@ timer = threading.Timer(120, time)
 time.sleep(5)
 timer.start()
 try:
-    while True:
+    while True: #loop infinito
+        os.system(MQTT_UB_TOPIC)
         message = queue.get()
         print(MQTT_SUB_TOPIC)
         message = json.loads(messag)
         time.sleep(1)
 except KeyboardInterrupt:
-    print("sudo shutdown -h now")
     timer.cancel()
     GPIO.cleanup()
+    print("poweroff program")
+    os.system("sudo poweroff")
     mqttc.loop_stop()
     mqttc.disconnect()
